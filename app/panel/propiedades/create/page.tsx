@@ -1,5 +1,9 @@
-import React from 'react';
+import FormCreatePropiedad from './FormCreatePropiedad';
 
 export default function page() {
-	return <div></div>;
+	return (
+		<div className="mt-12 mx-8">
+			<FormCreatePropiedad />
+		</div>
+	);
 }

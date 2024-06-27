@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,7 +8,7 @@ datasource db {
 }
 
 model Propiedades {
-  id             String  @unique @default(uuid())
+  id             String @unique @default(uuid())
   direccion      String
   precio         Int
   tipodeAlquiler String
@@ -24,6 +18,6 @@ model Propiedades {
   m2Totales      Int
   m2Cubiertos    Int
   descripcion    String
-  amoblado       Boolean
-  activo         Boolean
+  amoblado       String
+  activo         String
 }
