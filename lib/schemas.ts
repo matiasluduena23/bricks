@@ -10,13 +10,13 @@ export const PropiedadSchema = z.object({
 	descripcion: z.string().min(4, { message: 'Ingrese una direccion' }),
 	m2Totales: z.coerce.number().gt(5, { message: 'Ingrese una cantidad' }),
 	m2Cubiertos: z.coerce.number().gt(5, { message: 'Ingrese una cantidad' }),
-	tipoAlquiler: z.enum(['temporal', 'permanente'], {
+	tipodeAlquiler: z.enum(['temporal', 'permanente'], {
 		message: 'Seleccione una opcion',
 	}),
 	amoblado: z.enum(['si', 'no'], {
 		message: 'Seleccione una opcion',
 	}),
-	activo: z.enum(['si', 'no'], {
-		message: 'Seleccione una opcion',
+	activo: z.coerce.boolean({
+		required_error: 'Activo es requerio',
 	}),
 });

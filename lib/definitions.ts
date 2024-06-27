@@ -8,7 +8,7 @@ export type StatePropiedad = {
 		descripcion?: string[];
 		m2Totales?: string[];
 		m2Cubiertos?: string[];
-		tipoAlquiler?: string[];
+		tipodeAlquiler?: string[];
 		amoblado?: string[];
 		activo?: string[];
 	};

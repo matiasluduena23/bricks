@@ -7,17 +7,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum TipodeAlquiler {
+  temporal
+  permanente
+}
+
+enum Amoblado {
+  si
+  no
+}
+
 model Propiedades {
-  id             String @unique @default(uuid())
+  id             String         @unique @default(uuid())
   direccion      String
   precio         Int
-  tipodeAlquiler String
+  tipodeAlquiler TipodeAlquiler @default(permanente)
   dormitorios    Int
   ambientes      Int
   banos          Int
   m2Totales      Int
   m2Cubiertos    Int
   descripcion    String
-  amoblado       String
-  activo         String
+  amoblado       Amoblado
+  activo         Boolean        @default(true)
 }
