@@ -49,6 +49,7 @@ export default function FormEditPropiedad({
 		<form action={dispatch}>
 			<Input type="hidden" name="id" defaultValue={id} />
 			<div className="grid grid-cols-2">
+				{state.server && <p className="text-red-400">{state.server}</p>}
 				<div className="space-y-4">
 					<div className="grid w-full max-w-sm items-center gap-1.5">
 						<Label htmlFor="direccion">Direccion</Label>
@@ -249,7 +250,6 @@ export default function FormEditPropiedad({
 								</p>
 							))}
 					</div>
-
 					<Button type="submit">Actualizar</Button>
 				</div>
 			</div>

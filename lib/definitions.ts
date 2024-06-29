@@ -12,5 +12,6 @@ export type StatePropiedad = {
 		amoblado?: string[];
 		activo?: string[];
 	};
-	message?: string | null;
+	message?: string;
+	server?: string;
 };

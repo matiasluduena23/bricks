@@ -41,6 +41,7 @@ export async function createPropiedad(
 		});
 	} catch (error) {
 		console.log('Error inserting propiedad in database: ' + error);
+		throw Error('Error in the server. ');
 	}
 
 	revalidatePath('/panel/propiedades');
@@ -54,11 +55,11 @@ export async function editPropiedad(
 	const rawFormData = Object.fromEntries(formData.entries());
 	const validateData = PropiedadSchema.safeParse(rawFormData);
 
-	console.log(validateData.error);
 	if (!validateData.success) {
 		return {
 			errors: validateData.error.flatten().fieldErrors,
 			message: 'Missing Fields. Failed to Create Invoice.',
+			server: '',
 		};
 	}
 
@@ -68,30 +69,28 @@ export async function editPropiedad(
 				id: validateData.data.id,
 			},
 			data: {
-				direccion: validateData.data?.direccion!,
-				precio: validateData.data?.precio!,
-				dormitorios: validateData.data?.dormitorios!,
-				ambientes: validateData.data?.ambientes!,
-				banos: validateData.data?.banos!,
-				descripcion: validateData.data?.descripcion!,
-				m2Totales: validateData.data?.m2Totales!,
-				m2Cubiertos: validateData.data?.m2Cubiertos!,
-				tipodeAlquiler: validateData.data?.tipodeAlquiler!,
-				amoblado: validateData.data?.amoblado!,
-				activo: validateData.data?.activo!,
+				direccion: validateData.data.direccion,
+				precio: validateData.data.precio,
+				dormitorios: validateData.data.dormitorios,
+				ambientes: validateData.data.ambientes,
+				banos: validateData.data.banos,
+				descripcion: validateData.data.descripcion,
+				m2Totales: validateData.data.m2Totales,
+				m2Cubiertos: validateData.data.m2Cubiertos,
+				tipodeAlquiler: validateData.data.tipodeAlquiler,
+				amoblado: validateData.data.amoblado,
+				activo: validateData.data.activo,
 			},
 		});
 	} catch (error) {
 		console.log('Error updating propiedad in database: ' + error);
+		throw Error('Error in the server. ');
 	}
-
-	revalidatePath('/panel/propiedades');
 	redirect('/panel/propiedades');
 }
 
 export async function getPropiedades() {
 	const propiedades = await prisma.propiedades.findMany({});
-
 	return propiedades;
 }
 

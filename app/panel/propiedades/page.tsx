@@ -12,6 +12,7 @@ import {
 	TableRow,
 } from '@/components/ui/table';
 import { getPropiedades } from '@/lib/actions';
+import { DeleteDialog } from './delete/DeleteDialog';
 
 export default async function page() {
 	const propiedades = await getPropiedades();
@@ -35,6 +36,7 @@ export default async function page() {
 							<TableHead>Amoblado</TableHead>
 
 							<TableHead>Editar</TableHead>
+							<TableHead>Eliminar</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -55,6 +57,9 @@ export default async function page() {
 												Editar
 											</Link>
 										</Button>
+									</TableCell>
+									<TableCell>
+										<DeleteDialog id={item.id} />
 									</TableCell>
 								</TableRow>
 							))}
